@@ -1,0 +1,13 @@
+.CTextAbs{
+	position:absolute;
+	font-size:14px;
+}
+.CImgBtn{
+	position:absolute;
+	width:35px;
+	height:50px;
+}
+#ChildSelect{
+	position:absolute;
+	font-size:10px;
+}
