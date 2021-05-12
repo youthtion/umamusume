@@ -11,7 +11,7 @@ function initTable()
 {
 	AvailableParents.push(0);
 	for(var i = 1; i < uma.length; i++){
-		AvailableParents.push(true);
+		AvailableParents.push(false);
 	}
 	
 	for(var i = 0; i < ResultLength; i++){

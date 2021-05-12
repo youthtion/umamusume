@@ -6,6 +6,10 @@
 	position:absolute;
 	width:35px;
 	height:50px;
+	opacity:0.3;
+	-moz-opacity:0.3;
+	-khtml-opacity:0.3;
+	filter:alpha(opacity=30);
 }
 #ChildSelect{
 	position:absolute;
