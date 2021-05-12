@@ -3,7 +3,7 @@ var AvailableParents = new Array();
 var UnuseOpct = 0.3;
 var Result = new Array();
 var CalcState = 0;	// 0:ack 1:running
-var ResultLength = 10;
+var ResultLength = 100;
 var RelPtTable = uma[0]["rpt"];
 var ThreeRelPts = new Array(uma.length);
 
