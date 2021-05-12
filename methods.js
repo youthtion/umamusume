@@ -11,8 +11,7 @@ function initTable()
 {
 	AvailableParents.push(0);
 	for(var i = 1; i < uma.length; i++){
-		AvailableParents.push(false);
-		setOpacity(document.getElementById("ImgBtn"+i), UnuseOpct);
+		AvailableParents.push(true);
 	}
 	
 	for(var i = 0; i < ResultLength; i++){
