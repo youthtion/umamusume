@@ -26,13 +26,13 @@ document.write("<input id='CalcBtn' type='button' class='CTextAbs' style='left:1
 var ftop = 150;
 for(var i = 0; i < ResultLength; i++){
 	var dtop = ftop + i * 65;
-	document.write("<div id='ResultText"+i+"' class='CTextAbs' style='color:gray;left:145px;top:"+(dtop+20)+"px'></div>");
-	document.write("<div id='ResultImg"+i+"_0' class='CParentImg' style='background:white;left:10px;top:"+dtop+"px'></div>");
-	document.write("<div id='ResultImg"+i+"_1' class='CGrandPImg' style='background:white;left:53px;top:"+dtop+"px'></div>");
-	document.write("<div id='ResultImg"+i+"_2' class='CGrandPImg' style='background:white;left:53px;top:"+(dtop+30)+"px'></div>");
-	document.write("<div id='ResultImg"+i+"_3' class='CParentImg' style='background:white;left:75px;top:"+dtop+"px'></div>");
-	document.write("<div id='ResultImg"+i+"_4' class='CGrandPImg' style='background:white;left:118px;top:"+dtop+"px'></div>");
-	document.write("<div id='ResultImg"+i+"_5' class='CGrandPImg' style='background:white;left:118px;top:"+(dtop+30)+"px'></div>");
+	document.write("<div id='ResultText"+i+"' class='CTextAbs' style='display:none;color:gray;left:145px;top:"+(dtop+20)+"px'></div>");
+	document.write("<div id='ResultImg"+i+"_0' class='CParentImg' style='display:none;left:10px;top:"+dtop+"px'></div>");
+	document.write("<div id='ResultImg"+i+"_1' class='CGrandPImg' style='display:none;left:53px;top:"+dtop+"px'></div>");
+	document.write("<div id='ResultImg"+i+"_2' class='CGrandPImg' style='display:none;left:53px;top:"+(dtop+30)+"px'></div>");
+	document.write("<div id='ResultImg"+i+"_3' class='CParentImg' style='display:none;left:75px;top:"+dtop+"px'></div>");
+	document.write("<div id='ResultImg"+i+"_4' class='CGrandPImg' style='display:none;left:118px;top:"+dtop+"px'></div>");
+	document.write("<div id='ResultImg"+i+"_5' class='CGrandPImg' style='display:none;left:118px;top:"+(dtop+30)+"px'></div>");
 }
 initTable();
 </script>

@@ -3,7 +3,7 @@ var AvailableParents = new Array();
 var UnuseOpct = 0.3;
 var Result = new Array();
 var CalcState = 0;	// 0:ack 1:running
-var ResultLength = 100;
+var ResultLength = 1000;
 var RelPtTable = uma[0]["rpt"];
 var ThreeRelPts = new Array(uma.length);
 
@@ -86,16 +86,16 @@ function calcParents()
 			if(i1 == ChildId || AvailableParents[i1] == false)
 				continue;
 			for(var i2 = 1; i2 < uma.length; i2++){
-				if(i2 == ChildId || i2 == i0 || AvailableParents[i2] == false)	//i2~i4 can be same with child but pt 0
+				if(i2 == i0 || AvailableParents[i2] == false)
 					continue;
 				for(var i3 = i2+1; i3 < uma.length; i3++){
-					if(i3 == ChildId || i3 == i0 || AvailableParents[i3] == false)
+					if(i3 == i0 || AvailableParents[i3] == false)
 						continue;
 					for(var i4 = 1; i4 < uma.length; i4++){
-						if(i4 == ChildId || i4 == i1 || AvailableParents[i4] == false)
+						if(i4 == i1 || AvailableParents[i4] == false)
 							continue;
 						for(var i5 = i4+1; i5 < uma.length; i5++){
-							if(i5 == ChildId || i5 == i1 || AvailableParents[i5] == false)
+							if(i5 == i1 || AvailableParents[i5] == false)
 								continue;
 							parents = [i0,i1,i2,i3,i4,i5,0];
 							calcAiShou(parents);
@@ -109,26 +109,33 @@ function calcParents()
 	
 	for(var i = 0; i < ResultLength; i++){
 		if(Result[i][0] == 0){
-			document.getElementById("ResultText"+i).innerHTML = "";
-			document.getElementById("ResultImg"+i+"_0").style.background = "white";
-			document.getElementById("ResultImg"+i+"_1").style.background = "white";
-			document.getElementById("ResultImg"+i+"_2").style.background = "white";
-			document.getElementById("ResultImg"+i+"_3").style.background = "white";
-			document.getElementById("ResultImg"+i+"_4").style.background = "white";
-			document.getElementById("ResultImg"+i+"_5").style.background = "white";
+			document.getElementById("ResultText"+i).style.display = "none";
+			document.getElementById("ResultImg"+i+"_0").style.display = "none";
+			document.getElementById("ResultImg"+i+"_1").style.display = "none";
+			document.getElementById("ResultImg"+i+"_2").style.display = "none";
+			document.getElementById("ResultImg"+i+"_3").style.display = "none";
+			document.getElementById("ResultImg"+i+"_4").style.display = "none";
+			document.getElementById("ResultImg"+i+"_5").style.display = "none";
 		}
 		else{
+			document.getElementById("ResultText"+i).style.display = "block";
 			document.getElementById("ResultText"+i).innerHTML = Result[i][6];
+			document.getElementById("ResultImg"+i+"_0").style.display = "block";
 			document.getElementById("ResultImg"+i+"_0").style.background = "url(icon/"+Result[i][0]+".png) center";
 			document.getElementById("ResultImg"+i+"_0").style.backgroundSize = "cover";
+			document.getElementById("ResultImg"+i+"_1").style.display = "block";
 			document.getElementById("ResultImg"+i+"_1").style.background = "url(icon/"+Result[i][2]+".png) center";
 			document.getElementById("ResultImg"+i+"_1").style.backgroundSize = "cover";
+			document.getElementById("ResultImg"+i+"_2").style.display = "block";
 			document.getElementById("ResultImg"+i+"_2").style.background = "url(icon/"+Result[i][3]+".png) center";
 			document.getElementById("ResultImg"+i+"_2").style.backgroundSize = "cover";
+			document.getElementById("ResultImg"+i+"_3").style.display = "block";
 			document.getElementById("ResultImg"+i+"_3").style.background = "url(icon/"+Result[i][1]+".png) center";
 			document.getElementById("ResultImg"+i+"_3").style.backgroundSize = "cover";
+			document.getElementById("ResultImg"+i+"_4").style.display = "block";
 			document.getElementById("ResultImg"+i+"_4").style.background = "url(icon/"+Result[i][4]+".png) center";
 			document.getElementById("ResultImg"+i+"_4").style.backgroundSize = "cover";
+			document.getElementById("ResultImg"+i+"_5").style.display = "block";
 			document.getElementById("ResultImg"+i+"_5").style.background = "url(icon/"+Result[i][5]+".png) center";
 			document.getElementById("ResultImg"+i+"_5").style.backgroundSize = "cover";
 		}
@@ -138,10 +145,8 @@ function calcParents()
 
 function calcAiShou(parents)
 {
-	var aishou = 0;
-	
 	//親子1
-	var aishou = uma[parents[0]]["aishou"][ChildId]+
+	parents[6] = uma[parents[0]]["aishou"][ChildId]+
 	//親子2
 	uma[parents[1]]["aishou"][ChildId]+
 	//両親
@@ -154,8 +159,6 @@ function calcAiShou(parents)
 	ThreeRelPts[ChildId][parents[1]][parents[4]]+
 	//母父
 	ThreeRelPts[ChildId][parents[1]][parents[5]];
-
-	parents[6] = aishou;
 }
 
 function updateResult(parents)
