@@ -1,5 +1,5 @@
 var ChildId = 1;
-var AvailableParents = new Array();
+var AvailableParents = new Array(4);
 var UnuseOpct = 0.3;
 var Result = new Array();
 var CalcState = 0;	// 0:ack 1:running
@@ -9,9 +9,11 @@ var ThreeRelPts = new Array(uma.length);
 
 function initTable()
 {
-	AvailableParents.push(0);
-	for(var i = 1; i < uma.length; i++){
-		AvailableParents.push(false);
+	for(var i = 0; i < 4; i++){
+		AvailableParents[i] = new Array(uma.length);
+		for(var j = 1; j < uma.length; j++){
+			AvailableParents[i][j] = 0;
+		}
 	}
 	
 	for(var i = 0; i < ResultLength; i++){
@@ -48,15 +50,15 @@ function childChange(obj)
 	ChildId = obj.value;
 }
 
-function parentClick(pid)
+function parentClick(ptype, pid)
 {
-	if(AvailableParents[pid] == true){
-		AvailableParents[pid] = false;
-		setOpacity(document.getElementById("ImgBtn"+pid), UnuseOpct);
+	if(AvailableParents[ptype][pid] == true){
+		AvailableParents[ptype][pid] = false;
+		setOpacity(document.getElementById("ImgBtn_"+ptype+"_"+pid), UnuseOpct);
 	}
 	else{
-		AvailableParents[pid] = true;
-		setOpacity(document.getElementById("ImgBtn"+pid), 1);
+		AvailableParents[ptype][pid] = true;
+		setOpacity(document.getElementById("ImgBtn_"+ptype+"_"+pid), 1);
 	}
 }
 
@@ -80,22 +82,22 @@ function calcParents()
 	}
 	
 	for(var i0 = 1; i0 < uma.length; i0++){
-		if(i0 == ChildId || AvailableParents[i0] == false)
+		if(i0 == ChildId || AvailableParents[0][i0] == false)
 			continue;
 		for(var i1 = i0+1; i1 < uma.length; i1++){
-			if(i1 == ChildId || AvailableParents[i1] == false)
+			if(i1 == ChildId || AvailableParents[2][i1] == false)
 				continue;
 			for(var i2 = 1; i2 < uma.length; i2++){
-				if(i2 == i0 || AvailableParents[i2] == false)
+				if(i2 == i0 || AvailableParents[1][i2] == false)
 					continue;
 				for(var i3 = i2+1; i3 < uma.length; i3++){
-					if(i3 == i0 || AvailableParents[i3] == false)
+					if(i3 == i0 || AvailableParents[1][i3] == false)
 						continue;
 					for(var i4 = 1; i4 < uma.length; i4++){
-						if(i4 == i1 || AvailableParents[i4] == false)
+						if(i4 == i1 || AvailableParents[3][i4] == false)
 							continue;
 						for(var i5 = i4+1; i5 < uma.length; i5++){
-							if(i5 == i1 || AvailableParents[i5] == false)
+							if(i5 == i1 || AvailableParents[3][i5] == false)
 								continue;
 							parents = [i0,i1,i2,i3,i4,i5,0];
 							calcAiShou(parents);
