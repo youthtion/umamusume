@@ -84,8 +84,8 @@ function calcParents()
 	for(var i0 = 1; i0 < uma.length; i0++){
 		if(i0 == ChildId || AvailableParents[0][i0] == false)
 			continue;
-		for(var i1 = i0+1; i1 < uma.length; i1++){
-			if(i1 == ChildId || AvailableParents[2][i1] == false)
+		for(var i1 = 1; i1 < uma.length; i1++){
+			if(i0 == i1 || i1 == ChildId || AvailableParents[2][i1] == false)
 				continue;
 			for(var i2 = 1; i2 < uma.length; i2++){
 				if(i2 == i0 || AvailableParents[1][i2] == false)
@@ -165,6 +165,16 @@ function calcAiShou(parents)
 
 function updateResult(parents)
 {
+	for(var i = 0; i < ResultLength; i++){
+		if(Result[i][6] == parents[6]){
+			if(Result[i][0] == parents[1] && Result[i][2] == parents[4] && Result[i][3] == parents[5]){
+				if(Result[i][1] == parents[0] && Result[i][4] == parents[2] && Result[i][5] == parents[3]){
+					return;
+				}
+			}
+		}
+	}
+	
 	for(var i = ResultLength-1; i >= 0; i--){
 		if(Result[i][6] > parents[6]){
 			return;
