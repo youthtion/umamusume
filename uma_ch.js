@@ -13,15 +13,17 @@ var uma_ch = new Array(
 {name:"無聲鈴鹿"},
 {name:"櫻花進王"},
 {name:"皇帝"},
-{name:"超級小海灣"},
 {name:"特別週"},
 {name:"醒目飛鷹"},
+{name:"超級小海灣"},
+{name:"星雲天空"},
 {name:"大樹快車"},
 {name:"大和赤驥"},
 {name:"好歌劇"},
 {name:"東海帝皇"},
 {name:"優秀素質"},
 {name:"成田大進"},
+{name:"成田白仁"}
 {name:"春麗"},
 {name:"琵琶晨光"},
 {name:"待兼福來"},
@@ -31,5 +33,4 @@ var uma_ch = new Array(
 {name:"目白麥昆"},
 {name:"目白賴恩"},
 {name:"米浴"},
-{name:"成田白仁"}
 );
